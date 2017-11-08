@@ -5,7 +5,7 @@ function initMap() {
 		center: new google.maps.LatLng(2.8,-187.3),
 		mapTypeId: 'terrain'
 });
-
+	
 // Create a <script> tag and set the USGS URL as the source.
 var script = document.createElement('script');
 // This example uses a local copy of the GeoJSON stored at
@@ -14,7 +14,7 @@ script.src = 'https://developers.google.com/maps/documentation/javascript/exampl
 document.getElementsByTagName('head')[0].appendChild(script);
 }
 
- window.eqfeed_callback = function(results) {
+  window.eqfeed_callback = function(results) {
 	for (var i = 0; i < results.features.length; i++) {
 	  var coords = results.features[i].geometry.coordinates;
 	  var latLng = new google.maps.LatLng(coords[1],coords[0]);
