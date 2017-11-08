@@ -8,7 +8,7 @@ var info = [];
 
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 3, 
+		zoom: 4, 
 		center: centerPointX
 	});
 	
@@ -23,6 +23,15 @@ function initMap() {
 				});
 			});
 			console.info(markers);
+			
+			//Draw logo X-Team start
+			map.data.loadGeoJson('https://storage.googleapis.com/mapsdevsite/json/google.json');
+			// Set the stroke width, and fill color for each polygon
+			map.data.setStyle({
+			  fillColor: 'green',
+			  strokeWeight: 1
+			});
+			//Draw logo X-Team end
 			
 			// cluster markers X-Team Start
 			var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
@@ -39,13 +48,17 @@ function initMap() {
 		position: centerPointX,
 		icon: "./images/pinkball.png", 
 		animation: google.maps.Animation.BOUNCE,
+//		animation: google.maps.Animation.DROP,
 		map: map
 	});
 	// test marker X-Team end
 	
 	// info window X-Team start
 	var infowindow = new google.maps.InfoWindow({
-		content: '<img src="./images/ratingX.png">' + '<a href="#">Ford Mustang 2017</a>'
+		content:	'<h2>FriendyCar &#12484;</h1>' + 
+					'<img src="./images/ratingX.png">' + 
+					'<a href="#">Ford Mustang 2017</a>'
+//		content: '<img src="./images/infoWindow.jpg">'
 	});
 	testMarker.addListener('click', function () {
 		infowindow.open(map, testMarker);
